@@ -2,7 +2,7 @@
  * @Description  :
  * @Author       : lihui
  * @Date         : 2021-05-19 09:24:33
- * @LastEditTime : 2021-07-14 15:45:21
+ * @LastEditTime : 2021-07-16 16:52:22
  * @LastEditors  : lihui
  * @FilePath     : d:\workspace\myprojects\Iffy\设计模式\unit3.js
  */
@@ -159,6 +159,16 @@
 // };
 
 //惰性加载函数
+//bad
+var addEvent = function (elem, type, handler) {
+  if (window.addEventListener) {
+    return elem.addEventListener(type, handler, false)
+  }
+  if (window.attachEvent) {
+    return elem.attachEvent('on' + type, handler)
+  }
+}
+//better  
 var addEvent=function(ele,type,handler){
   if(window.addEventListener){
     addEvent=function(ele,type,handler){
