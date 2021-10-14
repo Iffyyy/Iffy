@@ -2,7 +2,7 @@
  * @Description  :
  * @Author       : lihui
  * @Date         : 2021-05-19 09:24:33
- * @LastEditTime : 2021-07-16 16:52:22
+ * @LastEditTime : 2021-08-11 15:04:13
  * @LastEditors  : lihui
  * @FilePath     : d:\workspace\myprojects\Iffy\设计模式\unit3.js
  */
@@ -62,14 +62,14 @@
 //   };
 // };
 
-// Function.prototype.after = function (fn) {
-//   var _this = this;
-//   return function () {
-//     var ret = _this.apply(this.arguments);
-//     fn.apply(this, arguments);
-//     return ret;
-//   };
-// };
+Function.prototype.after = function (fn) {
+  var _this = this;
+  return function () {
+    var ret = _this.apply(this.arguments);
+    fn.apply(this, arguments);
+    return ret;
+  };
+};
 
 // var func=function(){
 //   console.log(2)
