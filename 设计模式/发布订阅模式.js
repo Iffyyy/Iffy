@@ -88,23 +88,26 @@
 // 登录
 
 // 中介
-var Event=(function(){
-  var clientList = {}, listen, trigger, remove; 
-  listen = function( key, fn ){ 
-    if ( !clientList[ key ] ){ 
-      clientList[ key ] = []; 
-    } 
-    clientList[ key ].push( fn ); 
-  }; 
-  trigger = function(){ 
-    var key = Array.prototype.shift.call( arguments ), 
-    fns = clientList[ key ]; 
-    if ( !fns || fns.length === 0 ){ 
-      return false; 
-    } 
-    for( var i = 0, fn; fn = fns[ i++ ]; ){ 
-      fn.apply( this, arguments ); 
-    } 
+var Event = (function () {
+  var clientList = {},
+    listen,
+    trigger,
+    remove;
+  listen = function (key, fn) {
+    if (!clientList[key]) {
+      clientList[key] = [];
+    }
+    clientList[key].push(fn);
+  };
+  trigger = function () {
+    var key = Array.prototype.shift.call(arguments),
+      fns = clientList[key];
+    if (!fns || fns.length === 0) {
+      return false;
+    }
+    for (var i = 0, fn; (fn = fns[i++]); ) {
+      fn.apply(this, arguments);
+    }
   };
   remove = function (key, fn) {
     var fns = this.clientList[key];
@@ -120,15 +123,54 @@ var Event=(function(){
       }
     }
   };
-  return { 
-    listen: listen, 
-    trigger: trigger, 
-    remove: remove 
+  return {
+    listen: listen,
+    trigger: trigger,
+    remove: remove,
+  };
+})();
+
+Event.listen("squareMeter88", function (price) {
+  // 小红订阅消息
+  console.log("价格= " + price); // 输出：'价格=2000000'
+});
+Event.trigger("squareMeter88", 2000000); // 售楼处发布消息
+
+class EventEmitter {
+  constructor() {
+    this.handlers = {};
   }
-})()
 
-Event.listen( 'squareMeter88', function( price ){ // 小红订阅消息
-  console.log( '价格= ' + price ); // 输出：'价格=2000000' 
- }); 
-Event.trigger( 'squareMeter88', 2000000 ); // 售楼处发布消息
+  on(eventName, cb) {
+    if (!this.handlers[eventName]) {
+      this.handlers[eventName] = [];
+    }
 
+    this.handlers[eventName].push(cb);
+  }
+
+  emit(eventName, ...args) {
+    if (this.handlers[eventName]) {
+      const handlers = this.handlers[eventName].slice();
+      handlers.forEach((fn) => {
+        fn(...args);
+      });
+    }
+  }
+
+  off(eventName, cb) {
+    const callbacks = this.handlers[eventName];
+    const index = callbacks.indexOf(cb);
+    if (!index !== -1) {
+      callbacks.splice(index, 1);
+    }
+  }
+
+  once(eventName, cb) {
+    const wrapper = (...args) => {
+      cb(...args);
+      this.off(eventName, wrapper);
+    };
+    this.on(eventName, wrapper);
+  }
+}
