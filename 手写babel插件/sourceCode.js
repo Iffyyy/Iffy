@@ -1,14 +1,6 @@
-console.log(1);
+const str = "babel";
+console.log(str);
 
-function func() {
-    console.info(2);
-}
-
-export default class Clazz {
-    say() {
-        console.debug(3);
-    }
-    render() {
-        return <div>{console.error(4)}</div>
-    }
-}
+const a = 1,
+  b = 2;
+console.log(a + b);
