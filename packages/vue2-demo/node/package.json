@@ -10,5 +10,8 @@
   "license": "ISC",
   "devDependencies": {
     "progress": "^2.0.3"
+  },
+  "dependencies": {
+    "simple-git": "^3.4.0"
   }
 }
