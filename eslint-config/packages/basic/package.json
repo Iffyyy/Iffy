@@ -1,0 +1,29 @@
+{
+  "name": "@songwuk/eslint-config-basic",
+  "private": false,
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "version": "0.0.4",
+  "description": "eslint-config-basic for eslint",
+  "main": "index.js",
+  "keywords": [
+    "eslint-config"
+  ],
+  "scripts": {
+    "lint": "eslint . --config=index.js"
+  },
+  "homepage": "https://github.com/songwuk/eslint-config",
+  "files": [
+    "*.js"
+  ],
+  "author": "Song wuk <1017301325@qq.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^8.16.0"
+  },
+  "dependencies": {
+    "eslint-plugin-normal": "*"
+  }
+}

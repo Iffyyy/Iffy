@@ -1,0 +1,22 @@
+{
+    "name": "@songwuk/eslint-config-monorepo",
+    "version": "0.0.4",
+    "type": "module",
+    "description": "eslint-config-monorepo",
+    "keywords": [
+      "eslint",
+      "normal"
+    ],
+    "author": "Song wuk <1017301325@qq.com>",
+    "scripts": {
+      "lint": "eslint ."
+    },
+    "license": "MIT",
+    "devDependencies": {
+      "@songwuk/eslint-config-basic": "workspace:*",
+      "typescript": "^4.7.2",
+      "eslint": "^8.18.0",
+      "tsup": "^6.1.2"
+    }
+  }
+  
