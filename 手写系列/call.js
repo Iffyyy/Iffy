@@ -42,3 +42,10 @@ Function.prototype.myBind = function (context) {
     );
   };
 };
+
+function myNew(context){
+  const obj = {}
+  obj.__proto__=context.prototype
+  const res = context.apply(obj,[...arguments].slice(1))
+  return typeof res==='object'?res:obj
+}
