@@ -9,18 +9,18 @@
  * @param {number} x
  * @return {boolean}
  */
-var isPalindrome = function(x) {
-  x = String(x)
-  let left =0,right=x.length-1
-  while(left<right){
-    if(x[left]===x[right]){
-      left++
-      right-- ;
-    }else{
-      return false
+var isPalindrome = function (x) {
+  x = String(x);
+  let left = 0,
+    right = x.length - 1;
+  while (left < right) {
+    if (x[left] === x[right]) {
+      left++;
+      right--;
+    } else {
+      return false;
     }
   }
-  return true
+  return true;
 };
 // @lc code=end
-
