@@ -12,11 +12,17 @@
 var intToRoman = function (num) {
   const options = {
     1: "I",
+    4:'IV',
     5: "V",
+    9:'IX',
     10: "X",
+    40:'XL',
     50: "L",
+    90:'XC',
     100: "C",
+    400: "CD",
     500: "D",
+    900: "CM",
     1000: "M",
   };
   let res = "",
@@ -24,20 +30,7 @@ var intToRoman = function (num) {
   for (let i = 0; i < keys.length; i++) {
     if (num < keys[i]) continue;
     let times = parseInt(num / keys[i]);
-    if (num === 4 || num === 9) {
-      res += options[num + 1] + options[1];
-      continue;
-    }
-    if (num === 40 || num === 90) {
-      res += options[num + 10] + options[10];
-      continue;
-    }
-    if (num === 400 || num === 900) {
-      res += options[num + 100] + options[100];
-      continue;
-    }
     num = num % keys[i];
-    console.log(num);
     res += options[keys[i]].repeat(times);
   }
   return res;
